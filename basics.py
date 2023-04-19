@@ -20,10 +20,17 @@ def hextodec(hex_string):
 #     interger decimal without using 'int' eg.
 #      hextodec('3c0')   == 960
 #     """
+ 
     hex_values = {
         '0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
         '8': 8, '9': 9, 'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15
     }
+
+    #Checking throuh the dictionary if every char of hex_string is in the dictionary
+    for char in hex_string;
+        if char not in hex_values:
+            return None
+
     decimal_value = 0
     power = len(hex_string) - 1
     for char in hex_string:
