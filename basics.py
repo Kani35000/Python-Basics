@@ -69,3 +69,16 @@ def decodeTuple(encodedList):
         decodedString= decodedString + item[0] * item[1]
         
     return decodedString
+
+
+# if values=[[1,'i','a'],[2,'we','be','it'],[3,'are','few', 'two']]
+# write a function to create a dictionary structure like below 
+"""{
+    1:['i','a']
+    2:['we','be','it']
+    3:['are','few', 'two']
+}"""
+
+def createDict(values):
+    """creating new dictionary structure from a list using comprehension"""
+    return {item[0]:item[1:] for item in values}
