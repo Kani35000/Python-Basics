@@ -27,7 +27,7 @@ def hextodec(hex_string):
     }
 
     #Checking throuh the dictionary if every char of hex_string is in the dictionary
-    for char in hex_string;
+    for char in hex_string:
         if char not in hex_values:
             return None
 
@@ -37,3 +37,35 @@ def hextodec(hex_string):
         decimal_value += hex_values[char.upper()] * (16 ** power)
         power -= 1
     return decimal_value
+
+
+# write a function encoding that will encode a string 'AAAAABBBBCCCCCCC' 
+# to become a list of tuple [('A',5),('B',4),('C',7)]
+# Also write a function that will decode the list of tuple back to string.
+
+def encodeString(stringVal):
+    """This is a function encoding that will encode a string like 'AAAAABBBBCCCCCCC' 
+     to become a list of tuple [('A',5),('B',4),('C',7)]
+    """
+    encodedList=[]
+    prevChar=stringVal[0]
+    count=0
+    for char in stringVal:
+        count+=1
+        if prevChar!=char:         
+            encodedList.append((prevChar,count))
+            prevChar=char
+            count=0
+    encodedList.append((prevChar,count))
+    return encodedList
+
+
+def decodeTuple(encodedList):
+    """  this is a function that will decode the list of tuple produced
+    by the encoding function above back to string.
+    """
+    decodedString=""
+    for item in encodedList:
+        decodedString= decodedString + item[0] * item[1]
+        
+    return decodedString
