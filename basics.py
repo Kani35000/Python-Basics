@@ -82,3 +82,97 @@ def decodeTuple(encodedList):
 def createDict(values):
     """creating new dictionary structure from a list using comprehension"""
     return {item[0]:item[1:] for item in values}
+
+# write a function that produces all prime numbers of any given range
+# findPrimeNumbers(toprange, downrange)
+# example findPrimeNumbers(2, 100)
+# factors that make a prime number 
+# a. it divides only itself and 1
+# b. it doesnot divide by factors(2, 3, 5 nor 7) without a remender
+
+def findPrimeNumbers(downrange, toprange):
+    """this returns a list of prime numbers between the top rage and down range"""
+    listRange= list(range(downrange, toprange+1))
+    for number in listRange:
+        for factor in range(downrange, int(number ** 0.5)+1): 
+            if number%factor==0:
+                primeList=listRange.remove(number)
+    return primeList
+       
+            
+# static and instance Methods in classes
+class Wordset:
+    def __init__(self):
+        self.words=set()
+    def addText(self,text):
+        # instance method here
+        text=Wordset.cleanText(text)
+        for word in text.split():
+            self.words.add(word)
+
+    def cleanText(text):
+        # cleaning function
+        text.replace('!','').replace('.','').replace('\'','')
+        return text.lower()
+
+wordset= Wordset()
+
+wordset.addText('Hi, I\'m Kani! Here\'s a sentence I want to add')
+wordset.addText('Heres another sentence I want to aff again')
+
+print(wordset.words)
+
+class Wordset2:
+    # Another way but making replacepuncs itsown variable and having a chaining function
+    replacePuncs= ('!','.',',','\'')
+    def __init__(self):
+        self.words=set()
+
+    def addText(self,text):
+            # instance method here
+            text= Wordset2.cleanText(text)
+            for word in text.split():
+                self.words.add(word)
+
+    # using decorators
+    
+    def cleanText(text):
+        # chaining function
+        for punc in Wordset2.replacePuncs:
+            text= text.replace(punc,'')
+
+        return text.lower()
+wordset2=Wordset2()
+
+wordset2.addText('Hi, I\'m Kani! Here\'s a sentence I want to add')
+wordset2.addText('Heres another sentence I want to aff again')
+
+print(wordset2.words)
+
+class Wordset3:
+    
+    def __init__(self):
+        self.words=set()
+
+    def addText(self,text):
+        # instance method here
+        text= self.cleanText(text)
+        for word in text.split():
+            self.words.add(word)
+
+    @staticmethod
+    def cleanText(text):
+        # chaining functions
+        text= text.replace('!','').replace(',','').replace('\'', '').replace('\'','')
+
+        return text.lower()
+wordset3 = Wordset3()
+
+wordset3.addText('Hi, I\'m Kani! Here\'s a sentence I want to add')
+wordset3.addText('Heres another sentence I want to aff again')
+
+print(wordset3.words)
+
+
+
+
