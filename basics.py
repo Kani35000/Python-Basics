@@ -174,5 +174,37 @@ wordset3.addText('Heres another sentence I want to aff again')
 print(wordset3.words)
 
 
+#class Inheritance
+class Dog:
+    _legs = 4
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        print(self.name + 'says: Bark!')
+
+    def getLegs(self):
+        return self._legs
+
+class Chihuahua(Dog):
+    def speak(self):
+        print(f'{self.name} says: yap yap yap!')
+
+dog = Chihuahua('Roxy')
+# dog.speak()
 
 
+#  using python built-in class 
+myList = list()
+class UniqueList(list):
+    def append(self, item):
+        if item in self: 
+            # calling append in the parent class we use "super"
+            return 
+        super().append(item)
+uniqueList = UniqueList()
+uniqueList.append(1)
+uniqueList.append(2)
+uniqueList.append(3)
+
+print(uniqueList)
