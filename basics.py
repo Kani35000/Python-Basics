@@ -1,4 +1,5 @@
 from decimal import Decimal, getcontext
+from datetime import datetime
 
 def factorial(num):
     ''' Performs factorial
@@ -208,3 +209,32 @@ uniqueList.append(2)
 uniqueList.append(3)
 
 print(uniqueList)
+
+
+# Using python classes2
+def getCurrentTime():
+    return datetime.now(.strftime('%m-%d-%Y %H:%M:%S'))
+class Messager:
+    def __init__(self, listeners*[]):
+        self.listeners = listeners
+    
+    def send(self, message):
+        for listener in self.listeners:
+            listener.receive(message)
+    
+    def send(self, message):
+        #extending class here
+        pass
+class SaveMessages(Message):
+    def __init__(self, listeners*[]):
+        super().__init__(listeners)
+        self.messages = []
+    def receive(self, message):
+        self.messages.append({'message': message, 'time':getCurrentTime()})
+
+    def printMessage(self):
+        for n in self.messages:
+            print(f'Message: "{m['message']}" Time: {m['time']}')
+            self.messages = []
+
+
